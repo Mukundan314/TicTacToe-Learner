@@ -1,11 +1,11 @@
 import os
+
 import numpy as np
+
 import game
 
 
-def generate_states(board=game.Board([[0, 0, 0],
-                                      [0, 0, 0],
-                                      [0, 0, 0]])):
+def generate_states(board=game.Board([[0, 0, 0], [0, 0, 0], [0, 0, 0]])):
     states = [board.board]
     for move in board.valid_moves():
         tmp = board.copy()
@@ -25,6 +25,6 @@ def save_states(states, filename='states.npy'):
 
 
 if __name__ == '__main__':
-    if not  os.path.exists('states.npy'):
+    if not os.path.exists('states.npy'):
         states = np.unique(generate_states(), axis=0).tolist()
         save_states(states)

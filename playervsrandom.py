@@ -1,11 +1,17 @@
-import random
 import os
+import random
 
 import game
 
 player = {
-    'y': 0, 'Y': 0, 'yes': 0, 'Yes': 0,
-    'n': 1, 'N': 1, 'no':  1, 'No':  1
+    'y': 0,
+    'Y': 0,
+    'yes': 0,
+    'Yes': 0,
+    'n': 1,
+    'N': 1,
+    'no': 1,
+    'No': 1
 }[input('Do you want to go first: ')]
 
 board = game.Board()
@@ -19,7 +25,7 @@ while not state:
             state = 0
     else:
         moves = board.valid_moves()
-        move  = random.choice(moves)
+        move = random.choice(moves)
         state = board.play(move)
 
 board.print()
