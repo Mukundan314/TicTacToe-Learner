@@ -1,8 +1,7 @@
-import game
-
-from curses import wrapper
 import curses
-import os
+from curses import wrapper
+
+import game
 
 
 def main(stdscr):
@@ -16,19 +15,25 @@ def main(stdscr):
     while not state:
         board.curses_print(stdscr, y, x)
         move = {
-            55: 0, 56: 1, 57: 2,
-            52: 3, 53: 4, 54: 5,
-            49: 6, 50: 7, 51: 8
+            55: 0,
+            56: 1,
+            57: 2,
+            52: 3,
+            53: 4,
+            54: 5,
+            49: 6,
+            50: 7,
+            51: 8
         }[stdscr.getch()]
         state = board.play(move)
         stdscr.refresh()
 
     if state == 1:
-        stdscr.addstr(y+8, x, "X won")
+        stdscr.addstr(y + 8, x, "X won")
     if state == 2:
-        stdscr.addstr(y+8, x, "O won")
+        stdscr.addstr(y + 8, x, "O won")
     if state == 3:
-        stdscr.addstr(y+8, x, "Draw")
+        stdscr.addstr(y + 8, x, "Draw")
 
     stdscr.getch()
 
